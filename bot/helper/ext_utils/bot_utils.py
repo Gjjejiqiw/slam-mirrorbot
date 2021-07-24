@@ -21,8 +21,8 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading...📤"
-    STATUS_DOWNLOADING = "Downloading...📥"
+    STATUS_UPLOADING = "Uploading....📤 ⬆"
+    STATUS_DOWNLOADING = "Downloading....📥 ⬇"
     STATUS_CLONING = "Cloning...♻️"
     STATUS_WAITING = "Queued...📝"
     STATUS_FAILED = "Failed 🚫. Cleaning Download..."
@@ -116,7 +116,7 @@ def get_readable_message():
         for download in list(download_dict.values()):
             INDEX += 1
             if INDEX > COUNT:
-                msg += f"<b>Filename:</b> <code>{download.name()}</code>"
+                msg += f"<b>📁 Filename:</b> <code>{download.name()}</code>"
                 msg += f"\n<b>Status 🔥:</b> <i>{download.status()}</i>"
                 if download.status() != MirrorStatus.STATUS_ARCHIVING and download.status() != MirrorStatus.STATUS_EXTRACTING:
                     msg += f"\n<code>{get_progress_bar_string(download)} {download.progress()}</code>"
@@ -130,7 +130,7 @@ def get_readable_message():
                             f", <b>Estimated time of arrival ⏳:</b> {download.eta()} "
                     # if hasattr(download, 'is_torrent'):
                     try:
-                        msg += f"\n<b>Seeders 🌹:</b> {download.aria_download().num_seeders}" \
+                        msg += f"\n<b>Info ⚓️ :- Seeders 🌹:</b> {download.aria_download().num_seeders}" \
                             f" | <b>Peers 🥀:</b> {download.aria_download().connections}"
                     except:
                         pass
